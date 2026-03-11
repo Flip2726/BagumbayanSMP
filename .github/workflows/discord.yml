@@ -1,0 +1,13 @@
+name: Discord Dev Logs
+
+on: [push]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send commit to Discord
+        run: |
+          curl -H "Content-Type: application/json" \
+          -d "{\"content\":\"New commit pushed to the repository.\"}" \
+          ${{ secrets.DISCORD_WEBHOOK }}
